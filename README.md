@@ -14,3 +14,5 @@ The project offers users a simple interactive way to explore different statistic
 
 ### Credits
 I made a lot of use of [StackOverflow](stackoverflow.com) and the various contributors there.
+
+I also used the [Digital Ocean Community](https://www.digitalocean.com/community) for assistance.
