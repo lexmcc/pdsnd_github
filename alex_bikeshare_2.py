@@ -205,7 +205,9 @@ def check_data(city,month,day,df):
     return city, month, day, df
 
 def time_stats(df,city,month,day):
-    """Displays statistics on the most frequent times of travel."""
+    """Displays statistics on the most frequent times of travel.
+
+    If we are looking at a specific day or month, the most_common_day or most_common_month are not shown. """
 
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
