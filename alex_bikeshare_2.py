@@ -293,6 +293,45 @@ def trip_duration_stats(df):
     print('-'*40)
 
 
+def gender_stats(df):
+    '''Arguments: DataFrame.
+    Output: If there is Gender data, then display the volumes of each, else tell us there's no Gender data'''
+
+    if 'Gender' in df.columns:
+
+        gen_types = df.groupby('Gender')['Gender'].count()
+        gen_types = gen_types.to_dict()
+
+        for gen_type in gen_types:
+
+            print("There are {} {}s.".format(gen_types[gen_type], gen_type))
+
+
+    else:
+
+        print('We don\'t seem to have any gender data for this data set.')
+
+
+def birth_stats(df):
+    '''Arguments: DataFrame.
+    Output: Display earliest, most recent, and most common year of birth if they exist in the DataFrame, else tell us there's no Birthday data.'''
+
+    if 'Birth Year' in df.columns:
+
+        earliest_dob = int(df['Birth Year'].min())
+        print('The earliest date of birth is: {}.'.format(earliest_dob))
+
+        most_recent_dob = int(df['Birth Year'].max())
+        print('The most recent date of birth is: {}.'.format(most_recent_dob))
+
+        most_common_dob = int(df['Birth Year'].value_counts().idxmax())
+        print('The most common date of birth is: {}.'.format(most_common_dob))
+
+    else:
+
+        print('We don\'t have any age related data for this data set.')
+
+
 def user_stats(df):
     """Displays statistics on bikeshare users."""
 
@@ -308,42 +347,14 @@ def user_stats(df):
         print("There are {} {}s.".format(user_types[user_type], user_type))
 
 
-
     # Display counts of gender
     ## If Gender not in the df, then say we have no gender data.
 
-    if 'Gender' in df.index:
-
-        gen_types = df.groupby('Gender')['Gender'].count()
-        gen_types = gen_types.to_dict()
-
-        for gen_type in gen_types:
-
-            print("There are {} {}s.".format(gen_types[gen_type], gen_type))
-
-
-    else:
-
-        print('We don\'t seem to have any gender data for this data set.')
-
+    gender_stats(df)
 
     # Display earliest, most recent, and most common year of birth
 
-    if 'Birth Year' in df.index:
-
-        earliest_dob = int(df['Birth Year'].min())
-        print('The earliest date of birth is: {}.'.format(earliest_dob))
-
-        most_recent_dob = int(df['Birth Year'].max())
-        print('The most recent date of birth is: {}.'.format(most_recent_dob))
-
-        most_common_dob = int(df['Birth Year'].value_counts().idxmax())
-        print('The most common date of birth is: {}.'.format(most_common_dob))
-
-    else:
-
-        print('We don\'t have any age related data for this data set.')
-
+    birth_stats(df)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
