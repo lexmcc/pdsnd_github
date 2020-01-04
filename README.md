@@ -1,15 +1,16 @@
 ### Date created
-Include the date you created this project and README file.
+24/12/19
 
 ### Project Title
-Replace the Project Title
+#### An Exploration of US City Bikeshare Data
 
 ### Description
-Describe what your project is about and what it does
+The project offers users a simple interactive way to explore different statistics of data from 3 US cities' bike sharing programs, through the command line.
 
 ### Files used
-Include the files used
+- washington.csv
+- new_york_city.csv
+- chicago.csv
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
-
+I made a lot of use of [StackOverflow](stackoverflow.com) and the various contributors there.
