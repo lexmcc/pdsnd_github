@@ -205,7 +205,9 @@ def check_data(city,month,day,df):
     return city, month, day, df
 
 def time_stats(df,city,month,day):
-    """Displays statistics on the most frequent times of travel."""
+    """Displays statistics on the most frequent times of travel.
+
+    If we are looking at a specific day or month, the most_common_day or most_common_month are not shown. """
 
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
@@ -291,6 +293,26 @@ def trip_duration_stats(df):
     print('-'*40)
 
 
+def gender_stats(df):
+    '''Arguments: DataFrame.
+    Output: If there is Gender data, then display the volumes of each, else tell us there's no Gender data'''
+
+    if 'Gender' in df.columns:
+
+        gen_types = df.groupby('Gender')['Gender'].count()
+        gen_types = gen_types.to_dict()
+
+        for gen_type in gen_types:
+
+            print("There are {} {}s.".format(gen_types[gen_type], gen_type))
+
+
+    else:
+
+        print('We don\'t seem to have any gender data for this data set.')
+
+
+
 def user_stats(df):
     """Displays statistics on bikeshare users."""
 
@@ -310,20 +332,7 @@ def user_stats(df):
     # Display counts of gender
     ## If Gender not in the df, then say we have no gender data.
 
-    if 'Gender' in df.index:
-
-        gen_types = df.groupby('Gender')['Gender'].count()
-        gen_types = gen_types.to_dict()
-
-        for gen_type in gen_types:
-
-            print("There are {} {}s.".format(gen_types[gen_type], gen_type))
-
-
-    else:
-
-        print('We don\'t seem to have any gender data for this data set.')
-
+    gender_stats(df)
 
     # Display earliest, most recent, and most common year of birth
 
